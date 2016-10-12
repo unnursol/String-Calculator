@@ -32,4 +32,10 @@ public class CalculatorTest {
 	public void testNewLine(){
 			assertEquals(6, Calculator.add("1\n2,3"));
 	}
+
+	@Test
+	public void testBiggerThanThousand(){
+			assertEquals(2, Calculator.add("1001,2"));
+	}
+
 }
