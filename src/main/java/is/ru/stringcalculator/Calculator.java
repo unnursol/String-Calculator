@@ -2,14 +2,14 @@ package is.ru.stringcalculator;
 
 public class Calculator {
 
-	public static int add(String text){
+	public static int add(String text) throws Exception{
 		if(text.equals("")){
 			return 0;
 		}
 		else if(text.contains(",") | text.contains("\n")){
-			if(text.startsWith("//")){
+			/*if(text.startsWith("//")){
 				return changedDelimSum(text);
-			}
+			}*/
 		  String[] numbers = text.split(",|\n");
 		  return sum(numbers);
 		}
@@ -17,13 +17,12 @@ public class Calculator {
 			return 1;
 	}
 
-	private static int sum(String[] numbers){
-		String[] negNumbers = new String[]{};
+	private static int sum(String[] numbers) throws Exception{
 		int total = 0;
 		for(String number : numbers){
 			int n = Integer.parseInt(number);
 			if(n < 0){
-				//negNumbers.add(number);
+				throw new Exception ("Negatives not allowed: " + negString(numbers));
 			}
 			else if(n <= 1000){
 				total += Integer.parseInt(number);
@@ -32,6 +31,17 @@ public class Calculator {
 		return total;
 	}
 
+	private static String negString(String[] numbers){
+		String negNumbers = new String();
+		for(String number : numbers){
+			int n = Integer.parseInt(number);
+			if(n < 0){
+				negNumbers += number + ",";
+			}
+		}
+		return negNumbers.substring(0, negNumbers.length()-1);
+	}
+/*
 	private static int changedDelimSum(String text){
     int delimiterIndex = text.indexOf("//") + 2;
     String delimiter = text.substring(delimiterIndex, delimiterIndex + 1);
@@ -39,4 +49,5 @@ public class Calculator {
 		String[] numbers = numbersWithoutDelimiter.split(delimiter);
     return sum(numbers);
 	}
+*/
 }
