@@ -7,6 +7,9 @@ public class Calculator {
 			return 0;
 		}
 		else if(text.contains(",") | text.contains("\n")){
+			if(text.startsWith("//")){
+				return changedDelimSum(text);
+			}
 		  String[] numbers = text.split(",|\n");
 		  return sum(numbers);
 		}
@@ -27,5 +30,13 @@ public class Calculator {
 			}
 		}
 		return total;
+	}
+
+	private static int changedDelimSum(String text){
+    int delimiterIndex = text.indexOf("//") + 2;
+    String delimiter = text.substring(delimiterIndex, delimiterIndex + 1);
+		String numbersWithoutDelimiter = text.substring(text.indexOf("n") + 1);
+		String[] numbers = numbersWithoutDelimiter.split(delimiter);
+    return sum(numbers);
 	}
 }
