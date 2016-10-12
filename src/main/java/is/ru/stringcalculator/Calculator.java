@@ -7,9 +7,11 @@ public class Calculator {
 			return 0;
 		}
 		else if(text.contains(",") | text.contains("\n")){
-			/*if(text.startsWith("//")){
-				return changedDelimSum(text);
-			}*/
+			if(text.startsWith("//")){
+				String delimiter = Character.toString(text.charAt(2));
+				String[] numbers = text.substring(4, text.length()).split(delimiter);
+				return sum(numbers);
+			}
 		  String[] numbers = text.split(",|\n");
 		  return sum(numbers);
 		}

@@ -47,9 +47,9 @@ public class CalculatorTest {
 	public void testBiggerThanThousand() throws Exception{
 			assertEquals(2, Calculator.add("1001,2"));
 	}
-/*
+
 	@Test
-	public void testChangedDelimiter() throws Exeption{
+	public void testChangedDelimiter() throws Exception{
 			assertEquals(3, Calculator.add("//;\n1;2"));
-	}*/
+	}
 }
